@@ -5,6 +5,7 @@ import { startDogModule } from './Handlers/Dog'
 import { startAdviceModule } from './Handlers/Advice'
 import { startFunFactModule } from './Handlers/FunFact'
 import { startDefinitionModule } from './Handlers/Definition'
+import { startStickerModule } from './Handlers/Sticker'
 
 const helpModule = startHelpModule()
 
@@ -19,4 +20,6 @@ const adviceModule = startAdviceModule()
 const funFactModule = startFunFactModule();
 
 const dictionaryModule = startDefinitionModule()
+
+const stickerModule = startStickerModule()
 

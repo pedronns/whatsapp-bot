@@ -4,9 +4,10 @@ const defaultGatewayUrl = 'ws://localhost:4521';
 const helpMessage = `
 ✨ *Lista de Comandos* ✨
 
-📌 *!sticker [texto ou reply]*  
+📌 *!st [texto ou reply]*  
 📝 Gera uma figurinha a partir de uma mensagem de texto ou imagem.  
-Ex.: \`!sticker Olá mundo\`
+Ex.: \`!st Olá mundo\`
+Ex.: \`🖼️📎 !st\`
 
 📌 *!advice*  
 📝 Exibe um conselho aleatório (EN-US).  
