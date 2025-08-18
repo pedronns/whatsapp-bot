@@ -4,38 +4,48 @@ const defaultGatewayUrl = 'ws://localhost:4521';
 const helpMessage = `
 ✨ *Lista de Comandos* ✨
 
-📌 *!sticker*  
-📝 Gera uma figurinha a partir de uma mensagem de texto ou imagem.
+📌 *!sticker [texto ou reply]*  
+📝 Gera uma figurinha a partir de uma mensagem de texto ou imagem.  
+Ex.: \`!sticker Olá mundo\`
 
-📌 *!conselho*  
-📝 Exibe um conselho aleatório (pode conter erros de tradução).
+📌 *!advice*  
+📝 Exibe um conselho aleatório (EN-US).  
+Ex.: \`!advice\`
 
-📌 *!gato*  
-🐱 Mostra uma imagem aleatória de um gato.
+📌 *!cat*  
+🐱 Mostra uma imagem aleatória de um gato.  
+Ex.: \`!cat\`
 
-📌 *!cachorro*  
-🐶 Mostra uma imagem aleatória de um cachorro.
+📌 *!dog*  
+🐶 Mostra uma imagem aleatória de um cachorro.  
+Ex.: \`!dog\`
 
-📌 *!fato*  
-📝 Exibe um fato aleatório (pode conter erros de tradução).
+📌 *!fact*  
+📝 Exibe um fato aleatório (EN-US).  
+Ex.: \`!fact\`
 
 📌 *!yt audio/video [pesquisa]*  
 ▶️ Retorna o primeiro resultado do YouTube como áudio ou vídeo.  
-Ex.: \`!yt video Never Gonna Give You Up\`
+Ex.: \`!yt video Never Gonna Give You Up\`  
+Ex.: \`!yt audio Relaxing Music\`
 
 📌 *!roll [n]*  
 🎲 Rola um dado com _n_ lados (máx. 100).  
 Ex.: \`!roll 6\` → 🎲: 3
 
 📌 *!clima [cidade]*  
-🌤️ Mostra a previsão do tempo para a cidade informada.
+🌤️ Mostra a previsão do tempo para a cidade informada.  
+Ex.: \`!clima São Paulo\`
 
-📌 *!word [palavra]*  
-📖 Mostra o significado da palavra informada.
+📌 *!def [palavra]*  
+📖 Mostra a definição da palavra informada.  
+Ex.: \`!def casa\`
 
-📌 *!sinonimo [palavra]*  
-📝 Mostra sinônimos da palavra informada.
+📌 *!syn [palavra]*  
+📝 Mostra sinônimos da palavra informada.  
+Ex.: \`!syn feliz\`
 `;
+
 
 
 export const startHelpModule = () => {

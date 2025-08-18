@@ -26,6 +26,7 @@ async function fetchJson<T>(url: string): Promise<T> {
 
 export async function getDefinition(query: string): Promise<string | null> {
   try {
+	
     const data = await fetchJson<WordEntry[]>(`https://api.dicionario-aberto.net/word/${query}`);
 
     const parser = new DOMParser();
@@ -33,7 +34,7 @@ export async function getDefinition(query: string): Promise<string | null> {
 
 	function escapeWhatsAppMarkdown(text: string): string {
 		// remove os caracteres que afetam a formatação em WhatsApp/Telegram: * _ ~ `
-		return text.replace(/([*~`])/g, '\\$1');
+		return text.replace(/([*`])/g, '\\$1');
 	}
 
     data.forEach(entry => {
