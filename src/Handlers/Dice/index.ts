@@ -1,5 +1,10 @@
+import dotenv from 'dotenv'
 import { createModule, createMethod } from "kozz-module-maker";
-const defaultGatewayUrl = 'ws://localhost:4521';
+
+dotenv.config()
+
+const gatewayUrl = process.env.GATEWAY_URL ?? ''
+const socketPath = process.env.SOCKET_PATH ?? ''
 
 const diceHelp = `📌 *!roll [n]*  
 🎲 Rola um dado com _n_ lados (máx. 100).  
@@ -51,8 +56,8 @@ export const startDiceModule = () => {
 			},
 		},
 		name: 'roll',
-		address: defaultGatewayUrl,
-		customSocketPath: '/socket.io/',
+		address: gatewayUrl,
+		customSocketPath: socketPath,
 	});
 
 	return instance;

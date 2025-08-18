@@ -1,7 +1,11 @@
+import dotenv from 'dotenv'
 import { createModule, createMethod } from "kozz-module-maker";
-const defaultGatewayUrl = 'ws://localhost:4521';
-
 import { getDefinition } from "src/API/definition"; 
+
+dotenv.config()
+
+const gatewayUrl = process.env.GATEWAY_URL ?? ''
+const socketPath = process.env.SOCKET_PATH ?? ''
 
 const helpMessage = `📌 *!def [palavra]*  
 📖 Mostra a definição da palavra informada.  
@@ -11,8 +15,8 @@ Ex.: \`!def cavalo\``;
 export const startDefinitionModule = () => {
 	const instance = createModule({
 		name: 'def',
-		address: defaultGatewayUrl,
-		customSocketPath: '/socket.io/',
+		address: gatewayUrl,
+		customSocketPath: socketPath,
 		commands: {
 			boundariesToHandle: ['*'],
 			methods: {

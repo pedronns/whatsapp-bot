@@ -1,7 +1,11 @@
+import dotenv from 'dotenv'
 import { createModule, createMethod } from "kozz-module-maker";
-const defaultGatewayUrl = 'ws://localhost:4521';
-
 import { getFunFact } from "src/API/funFact"; 
+
+dotenv.config()
+
+const gatewayUrl = process.env.GATEWAY_URL ?? ''
+const socketPath = process.env.SOCKET_PATH ?? ''
 
 const helpMessage = `📌 *!conselho*  
 📝 Exibe um conselho aleatório (EN-US).  
@@ -11,8 +15,8 @@ Ex.: \`!fact\``;
 export const startFunFactModule = () => {
 	const instance = createModule({
 		name: 'fact',
-		address: defaultGatewayUrl,
-		customSocketPath: '/socket.io/',
+		address: gatewayUrl,
+		customSocketPath: socketPath,
 		commands: {
 			boundariesToHandle: ['*'],
 			methods: {

@@ -1,7 +1,11 @@
+import dotenv from 'dotenv'
 import { createModule, createMethod } from "kozz-module-maker";
-const defaultGatewayUrl = 'ws://localhost:4521';
-
 import { getAdvice } from "src/API/advice"; 
+
+dotenv.config()
+
+const gatewayUrl = process.env.GATEWAY_URL ?? ''
+const socketPath = process.env.SOCKET_PATH ?? ''
 
 const helpMessage = `📌 *!conselho*  
 📝 Exibe um conselho aleatório (EN-US).  
@@ -11,8 +15,8 @@ Ex.: \`!advice\``;
 export const startAdviceModule = () => {
 	const instance = createModule({
 		name: 'advice',
-		address: defaultGatewayUrl,
-		customSocketPath: '/socket.io/',
+		address: gatewayUrl,
+		customSocketPath: socketPath,
 		commands: {
 			boundariesToHandle: ['*'],
 			methods: {

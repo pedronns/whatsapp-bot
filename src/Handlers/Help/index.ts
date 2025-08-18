@@ -1,5 +1,10 @@
+import dotenv from 'dotenv'
 import { createModule, createMethod } from "kozz-module-maker";
-const defaultGatewayUrl = 'ws://localhost:4521';
+
+dotenv.config()
+
+const gatewayUrl = process.env.GATEWAY_URL ?? ''
+const socketPath = process.env.SOCKET_PATH ?? ''
 
 const helpMessage = `
 ✨ *Lista de Comandos* ✨
@@ -26,6 +31,7 @@ Ex.: \`!dog\`
 Ex.: \`!fact\`
 
 📌 *!yt audio/video [pesquisa]*  
+🚧 _*Módulo em construção*_ 🚧  
 ▶️ Retorna o primeiro resultado do YouTube como áudio ou vídeo.  
 Ex.: \`!yt video Never Gonna Give You Up\`  
 Ex.: \`!yt audio Relaxing Music\`
@@ -34,7 +40,8 @@ Ex.: \`!yt audio Relaxing Music\`
 🎲 Rola um dado com _n_ lados (máx. 100).  
 Ex.: \`!roll 6\` → 🎲: 3
 
-📌 *!clima [cidade]*  
+📌 *!clima [cidade]*
+🚧 _*Módulo em construção*_ 🚧  
 🌤️ Mostra a previsão do tempo para a cidade informada.  
 Ex.: \`!clima São Paulo\`
 
@@ -42,7 +49,8 @@ Ex.: \`!clima São Paulo\`
 📖 Mostra a definição da palavra informada.  
 Ex.: \`!def casa\`
 
-📌 *!syn [palavra]*  
+📌 *!syn [palavra]*
+🚧 _*Módulo em construção*_ 🚧  
 📝 Mostra sinônimos da palavra informada.  
 Ex.: \`!syn feliz\`
 `;
@@ -52,8 +60,8 @@ Ex.: \`!syn feliz\`
 export const startHelpModule = () => {
 	const instance = createModule({
 		name: 'help',
-		address: defaultGatewayUrl,
-		customSocketPath: '/socket.io/',
+		address: gatewayUrl,
+		customSocketPath: socketPath,
 		commands: {
 			boundariesToHandle: ['*'],
 			methods: {

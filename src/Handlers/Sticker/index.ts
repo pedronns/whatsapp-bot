@@ -1,8 +1,12 @@
+import dotenv from 'dotenv'
 import { createModule, createMethod } from 'kozz-module-maker';
 import { MessageObj } from 'kozz-module-maker/dist/Message';
 import { Media } from 'kozz-types';
 import { generateQuote } from 'src/API/QuoteApi';
-const defaultGatewayUrl = 'ws://localhost:4521';
+
+dotenv.config()
+
+const GatewayUrl = process.env.GATEWAY_URL ?? '';
 
 
 const helpMessage = `📌 *!st [texto ou reply]*  
@@ -131,7 +135,7 @@ export const startStickerModule = () => {
 		},
 		name: 'st',
 		customSocketPath: '/socket.io/',
-		address: defaultGatewayUrl,
+		address: GatewayUrl,
 	})
 
 	return instance;
