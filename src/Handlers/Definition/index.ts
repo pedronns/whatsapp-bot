@@ -32,11 +32,13 @@ export const startDefinitionModule = () => {
 						return requester.reply(helpMessage);
 					}
 
-					const meaning = await getDefinition(query);
+					const meanings = await getDefinition(query);
+					console.log(meanings);
+					
 					requester.reply(
-						meaning || `Não foi possível encontrar o significado de ${query}`
+						meanings || `Não foi possível encontrar o significado de ${query}`
 					);
-					requester.react(meaning ? '✔️' : '⚠️');
+					return requester.react(meanings ? '✔️' : '⚠️');
 				}),
 			},
 		},

@@ -33,7 +33,7 @@ export async function getDefinition(query: string): Promise<string | null> {
     let meanings: string[] = [];
 
 	function escapeWhatsAppMarkdown(text: string): string {
-		// remove os caracteres que afetam a formatação em WhatsApp/Telegram: * _ ~ `
+		// remove os caracteres que afetam a formatação em WhatsApp: * _ ~ `
 		return text.replace(/([*`])/g, '\\$1');
 	}
 
@@ -61,7 +61,12 @@ export async function getDefinition(query: string): Promise<string | null> {
       .map((m, i) => `*${i + 1}.* ${m}`)
       .join("\n");
 
-    return formatted;
+    const remaining = meanings.length - 3
+	const finalFormatted = remaining > 0
+	? `${formatted}\n_*Mais ${remaining} definições*_`
+	: formatted
+
+	return finalFormatted
 
   } catch (error) {
     console.error("Erro ao buscar significado:", error);
