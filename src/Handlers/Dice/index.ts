@@ -11,10 +11,12 @@ const diceHelp = `📌 *!roll [n]*
 Ex.: \`!roll 6\` → 🎲: 3`
 
 const queryDice = createMethod('fallback', async requester => {
+	requester.react('⏳')
 	try {
 		const query = requester.rawCommand!.query
 		
 		if (!query) {
+			requester.react('⚠️');
 			requester.reply(diceHelp);
 			return
 		}
@@ -22,25 +24,30 @@ const queryDice = createMethod('fallback', async requester => {
 		const sides = Number(query);
 		
 		if (isNaN(sides)) {
+			requester.react('⚠️');
 			requester.reply('⚠️ O valor precisa ser um número.\nEx: `!roll 20`');
 			return;
 		}
 
 		if(sides < 1 || sides > 100) {
+			requester.react('⚠️');
 			requester.reply('⚠️ Escolha um valor entre *1* e *100*.');
 			return;
 		}
 
 		if(!Number.isInteger(sides)) {
-			requester.reply('⚠️ Não existem lados fracionários, colega.');
+			requester.react('😑')
+			requester.reply('😑 Não existem lados fracionários, colega.');
 			return;
 		}
 
 		
 		const result = Math.floor(Math.random() * sides) + 1
+		requester.react('🎲')
 		requester.reply(`🎲: ${result}`)
 
 	} catch (error) {
+		requester.react('⚠️');
 		requester.reply('Erro ao rolar o dado');
 	}
 

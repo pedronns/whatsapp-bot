@@ -24,9 +24,11 @@ export const startDefinitionModule = () => {
 					requester.reply(helpMessage);
 				}),
 				...createMethod('fallback', async requester => {
+					requester.react('⏳')
 					const query = requester.message.body.split(' ').pop();
 
 					if (!query) {
+						requester.react('⚠️');
 						return requester.reply(helpMessage);
 					}
 
@@ -34,6 +36,7 @@ export const startDefinitionModule = () => {
 					requester.reply(
 						meaning || `Não foi possível encontrar o significado de ${query}`
 					);
+					requester.react(meaning ? '✔️' : '⚠️');
 				}),
 			},
 		},
