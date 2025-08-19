@@ -62,9 +62,10 @@ export async function getDefinition(query: string): Promise<string | null> {
       .join("\n");
 
     const remaining = meanings.length - 3
-	const finalFormatted = remaining > 0
-	? `${formatted}\n_*Mais ${remaining} definições*_`
-	: formatted
+	const finalFormatted =
+		remaining > 0
+			? `${formatted}\n_*Mais ${remaining} definiç${remaining == 1 ? 'ão' : 'ões'}*_`
+			: formatted;
 
 	return finalFormatted
 
