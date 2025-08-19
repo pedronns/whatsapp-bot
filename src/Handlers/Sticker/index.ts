@@ -134,7 +134,7 @@ export const startStickerModule = () => {
 			},
 		},
 		name: 'st',
-		customSocketPath: '/socket.io/',
+		customSocketPath: socketPath,
 		address: GatewayUrl,
 	})
 
