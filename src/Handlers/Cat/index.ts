@@ -21,20 +21,20 @@ export const startCatModule = () => {
 			boundariesToHandle: ['*'],
 			methods: {
 				...createMethod('default', async requester => {
-					requester.react('⏳');
+					// requester.react('⏳');
 
 					const catImage = await getCat()
 
 					if(catImage) {
 						requester.reply.withMedia.fromUrl(catImage, 'image');
-						requester.react('✔️');
+						// requester.react('✔️');
 					} else {
-						requester.react('⚠️');
+						// requester.react('⚠️');
 						requester.reply('Não foi possível encontrar uma imagem de gato 😿')
 					}
 				}),
 				...createMethod('help', requester => {
-					requester.react('❓');
+					// requester.react('❓');
 					requester.reply(helpMessage)
 				})
 			},

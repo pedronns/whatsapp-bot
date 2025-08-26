@@ -1,19 +1,18 @@
 import fetch from "node-fetch";
 import { DOMParser } from "xmldom";
 
-// Tipagem das entradas do endpoint /word
 type WordEntry = {
-  word: string;
-  xml: string;
-  sense: number;
-  word_id: number;
-  timestamp: string;
-  creator: string;
-  revision_id: number;
-  moderator?: string | null;
-  deletor?: string | null;
-  normalized?: string;
-  derived_from?: string | null;
+	word: string;
+	xml: string;
+	sense: number;
+	word_id: number;
+	timestamp: string;
+	creator: string;
+	revision_id: number;
+	moderator?: string | null;
+	deletor?: string | null;
+	normalized?: string;
+	derived_from?: string | null;
 };
 
 async function fetchJson<T>(url: string): Promise<T> {

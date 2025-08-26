@@ -21,19 +21,19 @@ export const startDogModule = () => {
 			boundariesToHandle: ['*'],
 			methods: {
 				...createMethod('default', async requester => {
-					requester.react('⏳')
+					// requester.react('⏳')
 					const dogImage = await getDog()
 
 					if(dogImage) {
 						requester.reply.withMedia.fromUrl(dogImage, 'image');
-						requester.react('✔️');
+						// requester.react('✔️');
 					} else {
 						requester.reply('Não foi possível encontrar uma imagem de cachorro 🐶')
-						requester.react('⚠️');
+						// requester.react('⚠️');
 					}
 				}),
 				...createMethod('help', requester => {
-					requester.react('❓')
+					// requester.react('❓')
 					requester.reply(helpMessage)
 				})
 			},

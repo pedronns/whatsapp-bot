@@ -66,7 +66,7 @@ export const startHelpModule = () => {
 			boundariesToHandle: ['*'],
 			methods: {
 				...createMethod('default', requester => {
-					requester.react('❓')
+					// requester.react('❓')
 					requester.reply(helpMessage)
 				}),
 			},

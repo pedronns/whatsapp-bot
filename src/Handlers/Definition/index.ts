@@ -24,21 +24,17 @@ export const startDefinitionModule = () => {
 					requester.reply(helpMessage);
 				}),
 				...createMethod('fallback', async requester => {
-					requester.react('⏳')
-					const query = requester.message.body.split(' ').pop();
+					const query = requester.message.body.replace(/^!\s*def\s+/i, '').trim();
 
 					if (!query) {
-						requester.react('⚠️');
 						return requester.reply(helpMessage);
 					}
 
 					const meanings = await getDefinition(query);
-					console.log(meanings);
 					
 					requester.reply(
 						meanings || `Não foi possível encontrar o significado de ${query}`
 					);
-					return requester.react(meanings ? '✔️' : '⚠️');
 				}),
 			},
 		},

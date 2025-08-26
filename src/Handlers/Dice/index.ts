@@ -11,7 +11,7 @@ const diceHelp = `📌 *!roll [n]*
 Ex.: \`!roll 6\` → 🎲: 3`
 
 const queryDice = createMethod('fallback', async requester => {
-	requester.react('⏳')
+	// requester.react('⏳')
 	try {
 		const query = requester.rawCommand!.query
 		

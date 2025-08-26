@@ -6,6 +6,7 @@ import { startAdviceModule } from './Handlers/Advice'
 import { startFunFactModule } from './Handlers/FunFact'
 import { startDefinitionModule } from './Handlers/Definition'
 import { startStickerModule } from './Handlers/Sticker'
+import { startMovieModule } from './Handlers/Movie'
 
 const helpModule = startHelpModule()
 
@@ -22,4 +23,6 @@ const funFactModule = startFunFactModule();
 const dictionaryModule = startDefinitionModule()
 
 const stickerModule = startStickerModule()
+
+const movieModule = startMovieModule()
 

@@ -21,13 +21,13 @@ export const startAdviceModule = () => {
 			boundariesToHandle: ['*'],
 			methods: {
 			...createMethod('default', async requester => {
-				requester.react('⏳')
+				// requester.react('⏳')
 				const advice = await getAdvice()
 				requester.reply(advice || 'Não foi possível obter um conselho.')
-				requester.react('✔️');
+				// requester.react('✔️');
 			}),
 			...createMethod('help', requester => {
-				requester.react('❓')
+				// requester.react('❓')
 				requester.reply(helpMessage)
 			}),
 		},

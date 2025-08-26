@@ -21,14 +21,14 @@ export const startFunFactModule = () => {
 			boundariesToHandle: ['*'],
 			methods: {
 			...createMethod('default', async requester => {
-				requester.react('⏳')
+				// requester.react('⏳')
 				const advice = await getFunFact()
 				
-				requester.react(advice ? '✔️' : '⚠️')
+				// requester.react(advice ? '✔️' : '⚠️')
 				requester.reply(advice || 'Não foi possível obter um fato curioso.')
 			}),
 			...createMethod('help', requester => {
-				requester.react('❓');
+				// requester.react('❓');
 				requester.reply(helpMessage)
 			}),
 		},
