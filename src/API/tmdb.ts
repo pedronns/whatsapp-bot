@@ -13,8 +13,6 @@ interface Movie {
   overview: string;
   popularity: number;
 }
-
-
 interface MovieSearchResponse {
 	page: number;
 	results: Movie[];
@@ -49,6 +47,7 @@ export async function getMovie(query: string): Promise<Movie | null> {
 
 		const results = data.results
 
+		// TODO: weighted sort considering date, popularity and query similarity
 		const movie = results.sort((a, b) => b.popularity - a.popularity)[0]
 
 		return movie
@@ -60,6 +59,4 @@ export async function getMovie(query: string): Promise<Movie | null> {
 	}
 }
 
-/* getMovie('Star Wars').then(data => {
-	console.log(JSON.stringify(data, null, 2));
-}); */
+

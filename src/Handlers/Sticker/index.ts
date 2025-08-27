@@ -11,7 +11,6 @@ const socketPath = process.env.SOCKET_PATH ?? ''
 
 const helpMessage = `📌 *!st [texto ou reply]*  
 📝 Gera uma figurinha a partir de uma mensagem de texto ou imagem.  
-Ex.: \`!st Olá mundo\`
 Ex.: \`🖼️📎 !st\``
 
 const helpInstructions = `Envie uma imagem com _*!st*_ na legenda, _ou_ responda a imagem com _*!st*_`
