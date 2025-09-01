@@ -1,62 +1,35 @@
 import dotenv from 'dotenv'
 import { createModule, createMethod } from 'kozz-module-maker'
-import { MessageObj } from 'kozz-module-maker/dist/Message'
-import { Media } from 'kozz-types'
-import { generateQuote } from 'src/API/QuoteApi'
 
 dotenv.config()
 
 const GatewayUrl = process.env.GATEWAY_URL ?? ''
 const socketPath = process.env.SOCKET_PATH ?? ''
 
-const helpMessage = `📌 *!st [texto ou reply]*  
-📝 Gera uma figurinha a partir de uma mensagem de texto ou imagem.  
-Ex.: \`🖼️📎 !st\``
+const helpMessage = `📌 *!st [imagem ou reply]*  
+📝 Gera uma figurinha a partir de uma imagem enviada ou mencionada.  
+Ex.: 🖼️📎 !st
+
+📌 *!st toimg [reply]*  
+📝 Converte uma figurinha em imagem comum.  
+Ex.: !st toimg
+
+📌 *!st from-link [url]*  
+📝 Cria uma figurinha a partir de uma imagem por link.  
+Ex.: !st from-link https://exemplo.com/imagem.jpg
+`
 
 const helpInstructions = `Envie uma imagem com _*!st*_ na legenda, _ou_ responda a imagem com _*!st*_`
 
-const makeQuote = async (requester: MessageObj) => {
-	const { quotedMessage } = requester.message
-
-	if (!quotedMessage || !quotedMessage.body) {
-		return requester.reply(helpMessage)
-	}
-
-	const text = quotedMessage.taggedConctactFriendlyBody
-	const name = quotedMessage.contact.publicName
-
-	console.log(quotedMessage)
-
-	const profilePicUrl = await requester.ask.boundary(
-		requester.message.boundaryName,
-		'contact_profile_pic',
-		{
-			id: quotedMessage.from,
-		}
-	)
-	const quoteB64 = await generateQuote(text, name, profilePicUrl.response)
-
-	if (!quoteB64) {
-		return requester.reply('Erro ao gerar o sticker')
-	}
-
-	const stickerMedia: Media = {
-		data: quoteB64,
-		fileName: `${text}.png`,
-		mimeType: 'image',
-		sizeInBytes: null,
-		transportType: 'b64',
-		stickerTags: ['💬', '🗯', '💭'],
-		duration: null,
-	}
-
-	requester.reply.withSticker(stickerMedia)
-}
 
 const defaultMethod = createMethod(
 	'default',
 	(requester, { tags }) => {
 		const { quotedMessage, media } = requester.message
+
+		if (quotedMessage?.messageType == 'TEXT') {
+			return requester.reply('⚠️ Não consigo gerar figurinhas a partir de textos (Por enquanto)')
+		}
 
 		if (media) {
 			return requester.reply.withSticker({
@@ -74,15 +47,10 @@ const defaultMethod = createMethod(
 				quotedMessage?.media &&
 				!['IMAGE', 'VIDEO', 'TEXT'].includes(quotedMessage.messageType)
 			) {
-				console.log('Entrou')
-				return requester.reply('Não sei como fazer figurinha desse tipo de mídia')
+				return requester.reply('⚠️ Não sei como fazer figurinha desse tipo de mídia')
 			} else {
 				return requester.reply.withSticker(quotedMessage.media)
 			}
-		}
-
-		if (quotedMessage) {
-			return makeQuote(requester)
 		}
 
 		requester.reply(helpInstructions)
@@ -103,7 +71,7 @@ const toImg = createMethod('toimg', message => {
 const fromLink = createMethod('from-link', requester => {
 	const link = requester.rawCommand?.immediateArg
 	if (!link) {
-		return requester.reply('Por favor envie um link')
+		return requester.reply('⚠️ Por favor envie um link')
 	}
 	try {
 		const url = new URL(link)
@@ -121,6 +89,9 @@ const fromLink = createMethod('from-link', requester => {
 	}
 })
 
+const help = createMethod('help', requester => {
+	return requester.reply(helpMessage)
+})
 
 export const startStickerModule = () => {
 	const instance = createModule({
@@ -130,6 +101,7 @@ export const startStickerModule = () => {
 				...defaultMethod,
 				...toImg,
 				...fromLink,
+				...help
 			},
 		},
 		name: 'st',

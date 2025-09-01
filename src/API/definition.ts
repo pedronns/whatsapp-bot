@@ -25,7 +25,6 @@ async function fetchJson<T>(url: string): Promise<T> {
 
 export async function getDefinition(query: string): Promise<string | null> {
   try {
-	
     const data = await fetchJson<WordEntry[]>(`https://api.dicionario-aberto.net/word/${query}`);
 
     const parser = new DOMParser();
@@ -40,10 +39,9 @@ export async function getDefinition(query: string): Promise<string | null> {
 			const xmlDoc = parser.parseFromString(entry.xml, 'text/xml');
 			const defs = xmlDoc.getElementsByTagName('def');
 
-			for (let i = 0; i < defs.length; i++) {
-				const raw = defs[i].textContent;
-				if (!raw) continue;
-
+		for (let i = 0; i < defs.length; i++) {
+			const raw = defs[i].textContent;
+		if (!raw) continue;
 				// divide múltiplos significados por linha
 				raw.split('\n').forEach(line => {
 					const trimmed = line.trim();
@@ -55,10 +53,10 @@ export async function getDefinition(query: string): Promise<string | null> {
 	
     if (!meanings.length) return null;
 
-	 const formatted = meanings
-      .slice(0, 3)
-      .map((m, i) => `*${i + 1}.* ${m}`)
-      .join("\n");
+	const formatted = meanings
+    	.slice(0, 3)
+    	.map((m, i) => `*${i + 1}.* ${m}`)
+    	.join("\n");
 
     const remaining = meanings.length - 3
 	const finalFormatted =

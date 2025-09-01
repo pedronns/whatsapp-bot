@@ -20,7 +20,7 @@ const adviceModule = startAdviceModule()
 
 const funFactModule = startFunFactModule();
 
-const dictionaryModule = startDefinitionModule()
+const dictionaryModule = startDefinitionModule();
 
 const stickerModule = startStickerModule()
 
