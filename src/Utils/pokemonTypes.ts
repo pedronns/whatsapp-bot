@@ -1,0 +1,20 @@
+export const typeMap: Record<string, string> = {
+  bug: "Inseto",
+  dark: "Sombrio",
+  dragon: "Dragão",
+  electric: "Elétrico",
+  fairy: "Fada",
+  fighting: "Lutador",
+  fire: "Fogo",
+  flying: "Voador",
+  ghost: "Fantasma",
+  grass: "Grama",
+  ground: "Terra",
+  ice: "Gelo",
+  normal: "Normal",
+  poison: "Veneno",
+  psychic: "Psíquico",
+  rock: "Pedra",
+  steel: "Aço",
+  water: "Água"
+};

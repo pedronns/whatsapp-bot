@@ -13,10 +13,6 @@ Ex.: 🖼️📎 !st
 📌 *!st toimg [reply]*  
 📝 Converte uma figurinha em imagem comum.  
 Ex.: !st toimg
-
-📌 *!st from-link [url]*  
-📝 Cria uma figurinha a partir de uma imagem por link.  
-Ex.: !st from-link https://exemplo.com/imagem.jpg
 `
 
 const helpInstructions = `Envie uma imagem com _*!st*_ na legenda, _ou_ responda a imagem com _*!st*_`
@@ -68,11 +64,13 @@ const toImg = createMethod('toimg', message => {
 	return message.reply.withMedia(message.message.quotedMessage.media)
 })
 
-const fromLink = createMethod('from-link', requester => {
+/* const fromLink = createMethod('from-link', requester => {
 	const link = requester.rawCommand?.immediateArg
+	
 	if (!link) {
 		return requester.reply('⚠️ Por favor envie um link')
 	}
+
 	try {
 		const url = new URL(link)
 		return requester.reply.withSticker({
@@ -87,7 +85,7 @@ const fromLink = createMethod('from-link', requester => {
 	} catch (_) {
 		return requester.reply('⚠️ O link provido não é válido')
 	}
-})
+}) */
 
 const help = createMethod('help', requester => {
 	return requester.reply(helpMessage)
@@ -100,7 +98,7 @@ export const startStickerModule = () => {
 			methods: {
 				...defaultMethod,
 				...toImg,
-				...fromLink,
+				//...fromLink,
 				...help
 			},
 		},

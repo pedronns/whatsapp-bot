@@ -7,6 +7,7 @@ import { startFunFactModule } from './Handlers/FunFact'
 import { startDefinitionModule } from './Handlers/Definition'
 import { startStickerModule } from './Handlers/Sticker'
 import { startMovieModule } from './Handlers/Movie'
+import { startPokemonModule } from './Handlers/Pokemon'
 
 const helpModule = startHelpModule()
 
@@ -26,3 +27,4 @@ const stickerModule = startStickerModule()
 
 const movieModule = startMovieModule()
 
+const pokemonModule = startPokemonModule()

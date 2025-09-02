@@ -6,12 +6,12 @@ dotenv.config();
 const token = process.env.TMDB_API_TOKEN;
 
 interface Movie {
-  title: string;
-  poster_path: string | null;
-  release_date: string;
-  vote_average: number;
-  overview: string;
-  popularity: number;
+  title: string
+  poster_path: string | null
+  release_date: string
+  vote_average: number
+  overview: string
+  popularity: number
 }
 interface MovieSearchResponse {
 	page: number;
