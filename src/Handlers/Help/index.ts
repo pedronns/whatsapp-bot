@@ -9,11 +9,16 @@ const socketPath = process.env.SOCKET_PATH ?? ''
 const helpMessage = `
 ✨ *Lista de Comandos* ✨
 
-📌 *!st*  
-📝 Gera uma figurinha a partir de uma imagem enviada ou mencionada.
+📌 *!st*
+Gera uma figurinha a partir de uma imagem enviada, ou de uma imagem/texto em uma mensagem mencionada.
+Ex.: \`🖼️📎 !st\`
+
+*!st toimg [resposta]*  
+Converte uma figurinha mencionada em imagem.
+Ex.: \`!st toimg\`
 
 📌 *!advice*  
-📝 Exibe um conselho aleatório (EN-US).  
+📝 Exibe um conselho aleatório (🇬🇧🇺🇸).  
 Ex.: \`!advice\`
 
 📌 *!cat*  
@@ -29,7 +34,7 @@ Ex.: \`!def casa\`
 Ex.: \`!dog\`
 
 📌 *!fact*  
-📝 Exibe um fato aleatório (EN-US).  
+📝 Exibe um fato aleatório (🇬🇧🇺🇸).  
 Ex.: \`!fact\`
 
 📌 *!movie [nome]*  

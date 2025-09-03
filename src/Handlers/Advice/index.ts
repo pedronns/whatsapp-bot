@@ -8,7 +8,7 @@ const gatewayUrl = process.env.GATEWAY_URL ?? ''
 const socketPath = process.env.SOCKET_PATH ?? ''
 
 const helpMessage = `📌 *!conselho*  
-📝 Exibe um conselho aleatório (EN-US).  
+📝 Exibe um conselho aleatório (🇬🇧🇺🇸).  
 Ex.: \`!advice\``;
 
 
