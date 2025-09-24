@@ -24,5 +24,6 @@ jobs:
 
     - name: Build
       run: |
-        npm install
+        yarn add kozz-types kozz-module-maker link-module-alias node-fetch
+        yarn add -D @types/express @types/jest @types/node-fetch nodemon typedoc typescript
         grunt
