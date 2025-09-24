@@ -28,6 +28,5 @@ jobs:
         git clone https://github.com/Kozz-Bot/Kozz-Gateway.git
         git clone https://github.com/Kozz-Bot/kozz-baileys.git
 
-        yarn add kozz-types kozz-module-maker link-module-alias node-fetch grunt
+        yarn add kozz-types kozz-module-maker link-module-alias node-fetch
         yarn add -D @types/express @types/jest @types/node-fetch nodemon typedoc typescript
-        grunt
